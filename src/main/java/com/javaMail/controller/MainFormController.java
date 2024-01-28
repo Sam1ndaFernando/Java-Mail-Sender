@@ -1,6 +1,8 @@
 package com.javaMail.controller;
 
+import com.javaMail.util.SendMail;
 import com.jfoenix.controls.JFXButton;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,7 +43,18 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnBack.setOnAction(event -> Platform.exit());
 
+        lblAttachedFileLabel.setVisible(false);
+        txtAttachedFile.setVisible(false);
+
+        txtMessage.setStyle("-fx-control-inner-background:  #393646; -fx-text-fill:  #f4eee0; -fx-border-width: 0;");
+        txtReceiverMail.setStyle("-fx-control-inner-background:  #393646; -fx-text-fill:  #f4eee0; ");
+        txtSenderMail.setStyle("-fx-control-inner-background:  #393646; -fx-text-fill:  #f4eee0; ");
+        txtSubject.setStyle("-fx-control-inner-background:  #393646; -fx-text-fill:  #f4eee0; ");
+        txtAttachedFile.setStyle("-fx-control-inner-background:  #393646; -fx-text-fill:  #f4eee0;");
+
+        txtSenderMail.setText("ichat925@gmail.com");
     }
 
     @FXML
@@ -84,7 +97,17 @@ public class MainFormController implements Initializable {
 
     @FXML
     void btnSendOnAction(ActionEvent event) {
+        String recipientEmail = txtReceiverMail.getText();
+        String subject = txtSubject.getText();
+        String messageText = txtMessage.getText();
 
+        // Create a new EmailSenderThread
+        SendMail emailSenderThread = new SendMail(recipientEmail, subject, messageText, selectedFile);
+
+        // Start the thread to send the email
+        emailSenderThread.start();
+
+        clearFields();
     }
 
     @FXML
@@ -107,5 +130,13 @@ public class MainFormController implements Initializable {
 
     }
 
+    private void clearFields() {
+        txtReceiverMail.clear();
+        txtSubject.clear();
+        txtMessage.clear();
+        txtAttachedFile.clear();
+        txtAttachedFile.setVisible(false);
+        lblAttachedFileLabel.setVisible(false);
+    }
 
 }
