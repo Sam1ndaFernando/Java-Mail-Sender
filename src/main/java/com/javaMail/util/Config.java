@@ -13,10 +13,15 @@ public class Config {
     private final String password;
 
     private Config() throws IOException {
-        Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("src/main/resources/password.properties");
-        properties.load(fileInputStream);
-        password = properties.getProperty("password");
+        try (FileInputStream fileInputStream = new FileInputStream("password.properties")) {
+            Properties properties = new Properties();
+            properties.load(fileInputStream);
+            password = properties.getProperty("password");
+        } catch (IOException e) {
+            // Handle IOException appropriately (e.g., log or throw a custom exception)
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public static Config getInstance() throws IOException {

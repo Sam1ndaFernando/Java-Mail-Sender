@@ -3,6 +3,7 @@ package com.javaMail.controller;
 import com.javaMail.util.SendMail;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -101,13 +102,42 @@ public class MainFormController implements Initializable {
         String subject = txtSubject.getText();
         String messageText = txtMessage.getText();
 
-        // Create a new EmailSenderThread
-        SendMail emailSenderThread = new SendMail(recipientEmail, subject, messageText, selectedFile);
+        // Use Task for better JavaFX integration
+        Task<Void> sendMailTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                // Execute your email sending logic here
+                SendMail emailSender = new SendMail(recipientEmail, subject, messageText, selectedFile);
+                emailSender.send(); // Assuming you have a send() method in your SendMail class
+                return null;
+            }
+        };
 
-        // Start the thread to send the email
-        emailSenderThread.start();
+        // Set up event handlers for task completion (success or failure)
+        sendMailTask.setOnSucceeded(workerStateEvent -> {
+            clearFields();
+            // Show success message or perform other UI-related actions
+            showAlert("Email sent successfully!", Alert.AlertType.CONFIRMATION);
+        });
 
-        clearFields();
+        sendMailTask.setOnFailed(workerStateEvent -> {
+            // Handle failure, show error message, log the exception, etc.
+            showAlert("Error sending email: " + sendMailTask.getException().getMessage(), Alert.AlertType.ERROR);
+        });
+
+        // Run the task on a background thread
+        new Thread(sendMailTask).start();
+    }
+
+    // Utility method to show alerts on the JavaFX Application Thread
+    private void showAlert(String message, Alert.AlertType alertType) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(alertType);
+            alert.setTitle("Email Status");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
     }
 
     @FXML
