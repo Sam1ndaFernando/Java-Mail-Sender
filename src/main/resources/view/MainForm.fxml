@@ -11,51 +11,52 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="684.0" prefWidth="488.0" style="-fx-background-color: #B6BBC4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaMail.controller.MainFormController">
+<AnchorPane prefHeight="575.0" prefWidth="1007.0" style="-fx-background-color: #F5EEE6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javaMail.controller.MainFormController">
     <children>
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="142.0" layoutX="11.0" layoutY="84.0" stroke="#5e5e5e" strokeType="INSIDE" strokeWidth="0.0" width="466.0" />
-      <Rectangle fill="#9bb8cd" height="62.0" layoutY="1.0" stroke="#5e5e5e" strokeType="INSIDE" strokeWidth="0.0" width="493.0" />
-        <Label alignment="CENTER" layoutX="38.0" layoutY="12.0" prefHeight="35.0" prefWidth="186.0" text="Compose" textFill="#f4eee0">
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="76.0" layoutY="441.0" stroke="#9a9a9a" strokeType="INSIDE" strokeWidth="0.0" width="1007.0" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="WHITE" height="252.0" layoutX="16.0" layoutY="135.0" stroke="#9a9a9a" strokeType="INSIDE" strokeWidth="0.0" width="482.0" />
+      <Rectangle fill="#747264" height="62.0" layoutY="-1.0" stroke="#5e5e5e" strokeType="INSIDE" strokeWidth="0.0" width="1007.0" />
+        <Label alignment="CENTER" layoutX="91.0" layoutY="12.0" prefHeight="35.0" prefWidth="186.0" text="Compose" textFill="#f4eee0">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="19.0" layoutY="99.0" prefHeight="21.0" prefWidth="86.0" text="From      : ">
+        <Label layoutX="33.0" layoutY="169.0" prefHeight="21.0" prefWidth="86.0" text="From      : ">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="19.0" layoutY="142.0" prefHeight="21.0" prefWidth="86.0" text="To          : ">
+        <Label layoutX="35.0" layoutY="242.0" prefHeight="21.0" prefWidth="86.0" text="To          : ">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="19.0" layoutY="186.0" prefHeight="21.0" prefWidth="86.0" text="Subject  :">
+        <Label layoutX="35.0" layoutY="318.0" prefHeight="21.0" prefWidth="86.0" text="Subject  :">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="23.0" layoutY="237.0" prefHeight="21.0" prefWidth="186.0" text="Compose Email" textFill="#f4eee0">
+        <Label layoutX="530.0" layoutY="142.0" prefHeight="21.0" prefWidth="186.0" text="Compose Email" textFill="#f4eee0">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="txtSenderMail" focusTraversable="false" layoutX="104.0" layoutY="96.0" onAction="#txtSenderMailOnAction" prefHeight="24.0" prefWidth="362.0" promptText="sendermail@example.com" style="-fx-background-color: #FBF6EE; -fx-background-radius: 10;">
+        <TextField fx:id="txtSenderMail" focusTraversable="false" layoutX="118.0" layoutY="166.0" onAction="#txtSenderMailOnAction" prefHeight="24.0" prefWidth="362.0" promptText="sendermail@example.com" style="-fx-background-color: #EEEDEB; -fx-background-radius: 10;">
             <font>
                 <Font size="15.0" />
             </font>
         </TextField>
-        <TextField fx:id="txtReceiverMail" focusTraversable="false" layoutX="104.0" layoutY="139.0" onAction="#txtReceiverMailOnAction" prefHeight="24.0" prefWidth="362.0" promptText="receivermail@example.com" style="-fx-background-color: #FBF6EE; -fx-background-radius: 10;">
+        <TextField fx:id="txtReceiverMail" focusTraversable="false" layoutX="120.0" layoutY="239.0" onAction="#txtReceiverMailOnAction" prefHeight="24.0" prefWidth="362.0" promptText="receivermail@example.com" style="-fx-background-color: #EEEDEB; -fx-background-radius: 10;">
             <font>
                 <Font size="15.0" />
             </font>
         </TextField>
-        <TextField fx:id="txtSubject" focusTraversable="false" layoutX="104.0" layoutY="182.0" onAction="#txtSubjectOnAction" prefHeight="24.0" prefWidth="362.0" promptText="Massege Subject" style="-fx-background-color: #FBF6EE; -fx-background-radius: 10;">
+        <TextField fx:id="txtSubject" focusTraversable="false" layoutX="120.0" layoutY="314.0" onAction="#txtSubjectOnAction" prefHeight="24.0" prefWidth="362.0" promptText="Massege Subject" style="-fx-background-color: #EEEDEB; -fx-background-radius: 10;">
             <font>
                 <Font size="15.0" />
             </font>
         </TextField>
-        <TextArea fx:id="txtMessage" focusTraversable="false" layoutX="24.0" layoutY="264.0" onDragDetected="#txtMessageOnAction" prefHeight="336.0" prefWidth="440.0" wrapText="true">
+        <TextArea fx:id="txtMessage" focusTraversable="false" layoutX="529.0" layoutY="135.0" onDragDetected="#txtMessageOnAction" prefHeight="263.0" prefWidth="445.0" wrapText="true">
             <font>
                 <Font size="15.0" />
             </font>
@@ -72,7 +73,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-        <JFXButton layoutX="344.0" layoutY="13.0" onAction="#btnAttachmentOnAction" prefHeight="35.0" prefWidth="20.0" text=".">
+        <JFXButton alignment="CENTER" contentDisplay="GRAPHIC_ONLY" layoutX="648.0" layoutY="460.0" onAction="#btnAttachmentOnAction" prefHeight="35.0" prefWidth="20.0" style="-fx-background-color: #747264; -fx-background-radius: 10;" text=".">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -84,7 +85,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-        <JFXButton layoutX="407.0" layoutY="13.0" onAction="#btnSendOnAction" prefHeight="35.0" prefWidth="20.0" text=".">
+        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="714.0" layoutY="460.0" onAction="#btnSendOnAction" prefHeight="35.0" prefWidth="86.0" style="-fx-background-color: #0C2D57;" text=".">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -96,12 +97,12 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </JFXButton>
-        <Label fx:id="lblAttachedFileLabel" layoutX="24.0" layoutY="629.0" prefHeight="21.0" prefWidth="129.0" text="Attached File : " textFill="#f4eee0">
+        <Label fx:id="lblAttachedFileLabel" layoutX="204.0" layoutY="468.0" prefHeight="21.0" prefWidth="129.0" text="Attached File : ">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="txtAttachedFile" editable="false" focusTraversable="false" layoutX="145.0" layoutY="626.0" prefHeight="29.0" prefWidth="320.0" style="-fx-background-color: #FBF6EE; -fx-background-radius: 10;">
+        <TextField fx:id="txtAttachedFile" editable="false" focusTraversable="false" layoutX="316.0" layoutY="462.0" prefHeight="29.0" prefWidth="320.0" style="-fx-background-color: #EEEDEB; -fx-background-radius: 10;">
             <font>
                 <Font size="15.0" />
             </font>
